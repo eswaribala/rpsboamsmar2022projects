@@ -96,6 +96,12 @@
 		    <artifactId>guava</artifactId>
 		    <version>19.0</version>
 		</dependency>
+		<!-- GSON -->
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		</dependency>
 		
 	</dependencies>
 
