@@ -42,7 +42,7 @@ public class UserController {
     //geatll
     @GetMapping({"/v1.0", "/v1.1"})
     public List<BOAUser> getAllUsers(){
-    	return this.getAllUsers();
+    	return this.userService.getAllUsers();
     }
     @GetMapping({"/v1.0/{userId}", "/v1.1/{userId}"})
     public ResponseEntity<String> getUserById(@PathVariable("userId") long userId) {
