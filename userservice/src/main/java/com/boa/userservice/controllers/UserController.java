@@ -1,6 +1,8 @@
 package com.boa.userservice.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,11 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.boa.userservice.dtos.JSONBOAUser;
 import com.boa.userservice.models.BOAUser;
 import com.boa.userservice.services.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.bohnman.squiggly.Squiggly;
+import com.github.bohnman.squiggly.util.SquigglyUtils;
 import com.google.gson.Gson;
 
 @RestController
@@ -80,5 +86,27 @@ public class UserController {
     	
     }
     
+    @GetMapping({"/v1.0/filters/{userId}", "/v1.1/filters/{userId}"})
+    public ResponseEntity<String> getUserFilteredDataById(@PathVariable("userId") 
+    long userId,@RequestParam(name = "fields", required = false) String fields) {
+    	BOAUser userObj=this.userService.getUserById(userId);
+    	Map<Object,Object> model=new HashMap<>();  	
+    	
+    	
+    	if(userObj!=null)
+    	{
+    		//fields refers to runtime selection
+    		ObjectMapper mapper = Squiggly.init(new ObjectMapper(), fields);     		
+			return ResponseEntity.status(HttpStatus.ACCEPTED).
+					body(SquigglyUtils.stringify(mapper, userObj));
+			
+
+    	}
+    	else
+    	{
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Not Available");
+    	}
+
+    }
     
 }

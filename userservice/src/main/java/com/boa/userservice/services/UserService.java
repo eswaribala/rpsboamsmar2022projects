@@ -16,19 +16,22 @@ public class UserService {
     //insert
     
     public BOAUser addUser(BOAUser boaUser) {
-    	
+    	//db and model
     	return this.userRepo.save(boaUser);
     }
     
     //select all
     
     public List<BOAUser> getAllUsers(){
+    	//db and model--select all
     	return this.userRepo.findAll();
     }
     
     //select by id
     
     public BOAUser getUserById(long userId) {
+    	
+    	//db and model--seelct with where
     	return this.userRepo.findById(userId).orElse(null);
     }
     
