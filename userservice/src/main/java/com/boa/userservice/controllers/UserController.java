@@ -90,7 +90,7 @@ public class UserController {
     public ResponseEntity<String> getUserFilteredDataById(@PathVariable("userId") 
     long userId,@RequestParam(name = "fields", required = false) String fields) {
     	BOAUser userObj=this.userService.getUserById(userId);
-    	Map<Object,Object> model=new HashMap<>();  	
+    
     	
     	
     	if(userObj!=null)
