@@ -1,4 +1,4 @@
-package com.virtusa.jwtsecurity.configurations;
+package com.boa.userservice.configurations;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -11,10 +11,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 import org.springframework.stereotype.Component;
 
-import com.virtusa.jwtsecurity.exceptions.JwtTokenMalformedException;
-import com.virtusa.jwtsecurity.exceptions.JwtTokenMissingException;
-import com.virtusa.jwtsecurity.models.Role;
-import com.virtusa.jwtsecurity.models.User;
+import com.boa.userservice.exceptions.JwtTokenMalformedException;
+import com.boa.userservice.exceptions.JwtTokenMissingException;
+import com.boa.userservice.models.Role;
+import com.boa.userservice.models.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

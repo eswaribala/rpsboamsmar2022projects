@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.boa.userservice.dtos.JSONBOAUser;
 import com.boa.userservice.models.BOAUser;
-import com.boa.userservice.services.UserService;
+import com.boa.userservice.services.BOAUserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.bohnman.squiggly.Squiggly;
 import com.github.bohnman.squiggly.util.SquigglyUtils;
@@ -29,10 +30,11 @@ import com.google.gson.Gson;
 @RequestMapping("/users")
 public class UserController {
     @Autowired
-	private UserService userService;
+	private BOAUserService userService;
 	
     private Gson gson;
     //add
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping({"/v1.0", "/v1.1"})
     public ResponseEntity<String> addUser(@RequestBody BOAUser boaUser){
     	gson=new Gson();
@@ -46,10 +48,12 @@ public class UserController {
     }
     
     //geatll
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping({"/v1.0", "/v1.1"})
     public List<BOAUser> getAllUsers(){
     	return this.userService.getAllUsers();
     }
+    @PreAuthorize("hasRole('USER')")
     @GetMapping({"/v1.0/{userId}", "/v1.1/{userId}"})
     public ResponseEntity<String> getUserById(@PathVariable("userId") long userId) {
     	BOAUser userObj=this.userService.getUserById(userId);
@@ -61,7 +65,7 @@ public class UserController {
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Not Available");
     	
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping({"/v1.0/{userId}", "/v1.1/{userId}"})
     public ResponseEntity<String> deleteUserById(@PathVariable("userId") long userId) {
     	
@@ -73,7 +77,7 @@ public class UserController {
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User Not Available");
     	
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping({"/v1.0", "/v1.1"})
     public ResponseEntity<String> updateUser(@RequestBody JSONBOAUser boaUser){
     	gson=new Gson();

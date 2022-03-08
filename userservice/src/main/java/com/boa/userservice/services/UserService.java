@@ -3,58 +3,48 @@ package com.boa.userservice.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.boa.userservice.models.BOAUser;
-import com.boa.userservice.repositories.UserRepo;
+import com.boa.userservice.models.Role;
+import com.boa.userservice.models.User;
+import com.boa.userservice.repositories.UserRepository;
+
+
 
 @Service
 public class UserService {
     @Autowired
-	private UserRepo userRepo;
-    
-    //insert
-    
-    public BOAUser addUser(BOAUser boaUser) {
-    	//db and model
-    	return this.userRepo.save(boaUser);
-    }
-    
-    //select all
-    
-    public List<BOAUser> getAllUsers(){
-    	//db and model--select all
-    	return this.userRepo.findAll();
-    }
-    
-    //select by id
-    
-    public BOAUser getUserById(long userId) {
-    	
-    	//db and model--seelct with where
-    	return this.userRepo.findById(userId).orElse(null);
-    }
-    
-    //delete
-    
-    public boolean deleteUserById(long userId) {
-    	boolean status=false;
-    	this.userRepo.deleteById(userId);
-    	if(this.getUserById(userId)==null)
-    		status=true;
-    	return status;
-    	
-    }
-    
-    //update
-    
-    public BOAUser updateUser(long userId,String password) {
-    	BOAUser boaUser=this.getUserById(userId);
-    	if(this.getUserById(userId)!=null) {
-    		boaUser.setPassword(password);
-    	}
-    	return this.userRepo.save(boaUser);
-    }
-    
-    
+	private UserRepository userRepository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	public User saveUser(User user)
+	{
+		System.out.println(user.getPassword());
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		return this.userRepository.save(user);
+		
+	}
+	
+	public List<User> getUsers()
+	{
+		return this.userRepository.findAll();
+		
+	}
+	
+	public User getUserByName(String userName)
+	{
+		return this.userRepository.findById(userName).orElse(null);
+	}
+	
+	public List<Role> getRoles(String userName)
+	{
+		User user =this.userRepository.findById(userName).orElse(null);
+		if(user!=null)
+			return user.getRoles();
+		else
+			return null;
+	}
+	
 }
