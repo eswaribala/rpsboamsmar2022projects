@@ -89,8 +89,7 @@ public class UserController {
     @GetMapping({"/v1.0/filters/{userId}", "/v1.1/filters/{userId}"})
     public ResponseEntity<String> getUserFilteredDataById(@PathVariable("userId") 
     long userId,@RequestParam(name = "fields", required = false) String fields) {
-    	BOAUser userObj=this.userService.getUserById(userId);
-    
+    	BOAUser userObj=this.userService.getUserById(userId);  
     	
     	
     	if(userObj!=null)
