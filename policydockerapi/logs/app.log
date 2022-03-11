@@ -7,4 +7,7 @@
 2022-03-02 15:40:06,426 INFO com.virtusa.policyapi.PolicyapiApplication [main] Starting PolicyapiApplication v0.0.1-SNAPSHOT on 5d6715b790fe with PID 1 (/policydockerapi-0.0.1-SNAPSHOT.jar started by root in /)
 2022-03-02 15:40:06,443 DEBUG com.virtusa.policyapi.PolicyapiApplication [main] Running with Spring Boot v2.3.12.RELEASE, Spring v5.2.15.RELEASE
 2022-03-02 15:40:06,444 INFO com.virtusa.policyapi.PolicyapiApplication [main] No active profile set, falling back to default profiles: default
-2022-03-02 15:40:34,472 INFO com.virtusa.policyapi.PolicyapiApplication [main] Started PolicyapiApplication in 29.364 seconds (JVM running for 32.585)
+2022-03-02 15:40:34,472 INFO com.virtusa.policyapi.PolicyapiApplication [main] Started PolicyapiApplication in 29.364 seconds (JVM running for 32.585)2022-03-11 16:37:01,243 INFO com.virtusa.policyapi.PolicyapiApplication [restartedMain] Starting PolicyapiApplication on DESKTOP-55AGI0I with PID 26136 (D:\Users\Balasubramaniam\git\repository\boamsmar2022\policydockerapi\target\classes started by Balasubramaniam in D:\Users\Balasubramaniam\git\repository\boamsmar2022\policydockerapi)
+2022-03-11 16:37:01,248 DEBUG com.virtusa.policyapi.PolicyapiApplication [restartedMain] Running with Spring Boot v2.3.12.RELEASE, Spring v5.2.15.RELEASE
+2022-03-11 16:37:01,249 INFO com.virtusa.policyapi.PolicyapiApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-03-11 16:37:22,712 INFO com.virtusa.policyapi.PolicyapiApplication [restartedMain] Started PolicyapiApplication in 22.109 seconds (JVM running for 24.192)
