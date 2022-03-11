@@ -4,7 +4,7 @@ spring.datasource:
   #username: sa
   #password: sa
   driverClassName: com.mysql.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/globalinsurancedb2022?useSSL=true&nullCatalogMeansCurrent=true 
+  url: jdbc:mysql://localhost:3306/fundtransferdb?useSSL=true&nullCatalogMeansCurrent=true 
   username: root
   password: vignesh
 #spring.h2.console.enabled: true
