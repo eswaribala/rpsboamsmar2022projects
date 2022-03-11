@@ -19,4 +19,4 @@ camunda.bpm:
   filter:
     create: All Tasks
 #  default-serialization-format: application/json
-server.port: 8080
+server.port: 7080
